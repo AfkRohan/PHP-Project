@@ -54,7 +54,7 @@ require_once("functions.inc.php");
             <a href="shop.php" class="btn">Explore Now &#8594;</a>
         </div>
         <div class="col-2">
-            <img src="images/banner.jpg" width="750px">
+            <img src="images/1.jpg" width="450px">
         </div>
     </div>
 </div>
