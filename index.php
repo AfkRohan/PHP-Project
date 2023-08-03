@@ -186,7 +186,6 @@ require_once("functions.inc.php");
                 <h3>Contact Us</h3>
                 <p>123 Main Street<br>Anytown, USA<br>Phone: 555-555-5555<br>Email: info@grocerystore.com</p>
             </div>
-
         </div>
     </div>
     <div class="footer-bottom">
