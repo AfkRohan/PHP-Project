@@ -130,7 +130,7 @@ button[type="submit"]:hover {
     text-decoration: none;
 }
 
-div img{
+.pImage img{
     max-width: 30%;
     height: 30%;
     background: lightblue;
@@ -268,6 +268,23 @@ h4{
 .col-5 img:hover{
     filter:grayscale(0);
 }
+
+            .product{
+              display:flex;
+              width:90%;
+              margin:auto;
+              flex-direction:row;
+            }
+
+            .product-image img{
+              max-width: "400px";
+              height:auto;
+              border:solid 1px black;
+            }
+
+            .procut div{
+              flex-grow:1;
+            }
 
 
 

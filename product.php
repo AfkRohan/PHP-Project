@@ -38,8 +38,8 @@
 
         <div class="product">
                 <div class="product_image">
-                    <img src="<?php echo $product['ProductImageUrl']
-                    ?>" alt="Product Image" width="300px" height="400px">
+                    <img src="Images/<?php echo $product['ProductImageUrl']
+                    ?>" alt="Product Image"  >
                 </div>
                 <div class="product_content">
                     <h3> <?php echo $product['Pname']
@@ -47,10 +47,10 @@
                     <p> <?php echo $product['ProductDescription']
                     ?>
                 </p>
+                <h3> <?php echo $product['Price']." CAD"; ?>  </h3>
                 </div>
         </div>        
         <div>
-          <h3> <?php $product['Price'] ?>  </h3>
           <button> Add to cart </button>
         </div>   
         <footer class="footer">
