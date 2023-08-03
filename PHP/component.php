@@ -69,7 +69,7 @@ function Index_Component($product_name, $product_price,$image, $id){
     $product_image = "Images/{$image}";
     $element = "
      <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
-                <form action=\"cart.php\" method=\"post\">
+                <form action=\"cart.php\" method=\"get\">
                     <div class=\"card shadow\">
                         <div class=\"imageclass\">
                             <img src='$product_image' alt=\"Image1\" class=\" img-fluid card-img-top\" id=\"pImage2\">
