@@ -56,20 +56,20 @@ require_once("functions.inc.php");
     </div>
 </div>
 <?php require_once("db/db_conn.php");
-require_once ("php/header.php");
+
 require_once ("php/component.php");
  ?>
 
 <div class="container">
-<h1> Ready to Eat Products</h1>
+<h1 class="FeaturedProduct">Electronics</h1>
             <div class="row text-left py-2">
                
                 <?php
                 global $pdo;
-                $stmt = $pdo->query("SELECT * FROM products where Categories_CategoryID=1");
+                $stmt = $pdo->query("SELECT * FROM products where Categories_CategoryID=2");
 
                 while($row=$stmt->fetch()){
-                    component($row['Pname'], $row['ProductDescription'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
+                    Index_Component($row['Pname'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
                 }
 
                 ?>

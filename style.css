@@ -286,219 +286,25 @@ h4{
               flex-grow:1;
             }
 
+.FeaturedProduct{
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 34px;
+    text-decoration: underline;
+    padding: 10px;
+    background-color: #555;
+    border-radius: 25px;
+    margin-top:25px;
+    color:white;
+}
 
-
-
-
-/*body {*/
-/*    background-color:#C5C5C5;*/
-/*    margin:0;*/
-/*    text-align:center;*/
-/*}*/
-/*.headerImage {*/
-/*    background-color: #333;*/
-/*    background-image: url("images/banner-image.jpg");*/
-/*    background-position: center;*/
-/*    background-repeat: no-repeat;*/
-/*    background-size:cover;*/
-/*    position:relative;*/
-/*    height: 620px;*/
-/*    width:100%;*/
-/*    color: #fff;*/
-/*    text-align: center;*/
-/*}*/
-
-/*a {*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*li {*/
-/*    list-style: none;*/
-/*}*/
-
-/*.navbar {*/
-/*    top:0;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: right;*/
-/*    padding: 10px;*/
-/*    background-color: #3B3B3B;*/
-/*    font-weight:bold;*/
-/*    color: #fff;*/
-/*}*/
-
-/*.nav-links a {*/
-/*    color: #fff;*/
-/*}*/
-
-/*.menu {*/
-/*    display: flex;*/
-/*    gap: 1em;*/
-/*    font-size: 18px;*/
-/*}*/
-
-/*.menu li:hover {*/
-/*    background-color: #738580;*/
-/*    border-radius: 5px;*/
-/*    transition: 0.3s ease;*/
-/*}*/
-
-/*.menu li {*/
-/*    padding: 5px 14px;*/
-/*}*/
-
-/*h2 {*/
-/*    text-align: center;*/
-/*    margin-top: 50px;*/
-/*    margin-bottom: 30px;*/
-/*    color: #333;*/
-/*}*/
-
-/*td button a {*/
-/*    text-decoration: none;*/
-/*    color:#DFDEDF;*/
-/*}*/
-
-/*td button {*/
-/*    padding: 6px 14px;*/
-/*    border-radius: 6px;*/
-/*    border: none;*/
-/*    background: #3E3E3E;*/
-/*    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);*/
-/*    user-select: none;*/
-/*    -webkit-user-select: none;*/
-/*    touch-action: manipulation;*/
-/*    font-weight:bold;*/
-/*}*/
-
-/*td button:hover {*/
-/*    background-color: #505149;*/
-/*}*/
-
-/*.form {*/
-/*    width: 400px;*/
-/*    margin: 50px auto;*/
-/*    padding: 40px;*/
-/*    background-color: #f2f2f2;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 2px 2px 10px #333;*/
-/*    text-align:left;*/
-/*}*/
-
-/*.placeholder {*/
-/*    font-weight:bold;*/
-/*    display: block;*/
-/*    margin-bottom: 10px;*/
-/*    font-size: 16px;*/
-/*    color: #333;*/
-/*}*/
-
-/*.input {*/
-/*    width: 380px;*/
-/*    padding: 10px;*/
-/*    margin-bottom: 20px;*/
-/*    border: none;*/
-/*    border-radius: 5px;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*.submit {*/
-/*    width: 100%;*/
-/*    padding: 10px;*/
-/*    margin-top: 20px;*/
-/*    background-color: #3B3B3B;*/
-/*    color: #fff;*/
-/*    border: none;*/
-/*    border-radius: 5px;*/
-/*    font-size: 16px;*/
-/*    cursor: pointer;*/
-/*    font-weight:bold;*/
-/*}*/
-
-/*.submit:hover {*/
-/*    background-color: #525252;*/
-/*}*/
-
-/*.table {*/
-/*    width:70%; */
-/*    margin-left:15%; */
-/*    margin-right:15%;*/
-/*    border-collapse: collapse;*/
-/*    font-size: 0.9em;*/
-/*    font-family: sans-serif;*/
-/*    min-width: 400px;*/
-/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
-/*    margin-bottom: 30px;*/
-/*}*/
-
-/*.table thead tr {*/
-    /*background-color: #dddddd;*/
-    /*font-weight: bold;*/
-/*    background-color: #738580;*/
-/*    color: #ffffff;*/
-/*    text-align: left;*/
-/*}*/
-
-/*.table th,*/
-/*.table td {*/
-/*    padding: 12px 15px;*/
-/*}*/
-
-/*.table tbody tr {*/
-/*    border-bottom: 1px solid #dddddd;*/
-/*}*/
-
-/*.table tbody tr:nth-of-type(even) {*/
-/*    background-color: #f3f3f3;*/
-/*}*/
-
-/*.table tbody tr:last-of-type {*/
-/*    border-bottom: 2px solid #738580;*/
-/*}*/
-
-/*.data-row {*/
-/*    border-bottom: 1px solid #dddddd;*/
-/*}*/
-
-/*.data {*/
-/*    background-color:white;*/
-/*}*/
-
-/*.link {*/
-/*    color: blue;*/
-/*    text-decoration: underline;*/
-/*}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.imageclass{
+  
+    height: 280px;
+   
+}
+#pImage2{
+    height: 250px;
+    width:250px;
+    
+}
