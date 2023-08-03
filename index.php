@@ -53,11 +53,22 @@ require_once("functions.inc.php");
     <?php
     global $pdo;
     $stmt = $pdo->query("SELECT * FROM products");
-
-    while($row=$stmt->fetch()){
-        component($row['product_name'], $row['product_price'], $row['product_image'], $row['id']);
+    <?php
+    // Step 4: Display products on the index page
+    if ($stmt->num_rows > 0) {
+        while ($row = $stmt->fetch_assoc()) {
+            echo "<li>";
+            echo "<strong>Name:</strong> " . $row['Pname'] . "<br>";
+            echo "<strong>Price:</strong> $" . $row['Price'] . "<br>";
+            echo "<strong>Description:</strong> " . $row['ProductDescription'] . "<br>";
+            echo " <a href='cart.php?id=" . $row["id"] . "' class='btn'>Add to Cart</a>";
+            echo "</li>";
+        }
+    } else {
+        echo "No products found.";
     }
-
+    ?>
+    
    
 </div>
 </div>
