@@ -43,8 +43,7 @@ require_once("functions.inc.php");
         <?php } ?>
     </ul>
 </nav>
-<header>
-</header>
+
 <div class="header">
     <div class="row">
         <div class="col-2">
