@@ -6,7 +6,7 @@
     {
         global $pdo;
         $stmt=$pdo->prepare(
-            "select CId, Password_hash from customer
+            "select CID, Password_hash from customer
             where Email=:email");
         $stmt->execute([
             "email" => $email
@@ -18,8 +18,8 @@
             $row=$stmt->fetch(PDO::FETCH_ASSOC);
             if($password == $row["Password_hash"])
             {
-                // session_regenerate_id();
-                // $_SESSION["UserId"]=$row["UserId"];
+                session_regenerate_id();
+                $_SESSION["CID"]=$row["CID"];
                 return true;
             }
         }
