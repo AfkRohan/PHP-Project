@@ -6,6 +6,7 @@ require_once("functions.inc.php");
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Test -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" rel="stylesheet">
