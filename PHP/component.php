@@ -42,12 +42,12 @@ function cartElement($product_name, $product_price, $product_image, $id)
                     <div class=\"border rounded\">
                         <div class=\"row bg-white\">
                             <div class=\"col-md-3 pl-0\">
-                                <img src=$ProductImageUrl alt=\"Image1\" class=\"img-fluid\">
+                                <img src=$product_image alt=\"Image1\" class=\"img-fluid\">
                             </div>
                             <div class=\"col-md-6\">
-                                <h5 class=\"pt-2\">$Pname</h5>
+                                <h5 class=\"pt-2\">$product_name</h5>
                                 <small class=\"text-secondary\">Seller: dailytuition</small>
-                                <h5 class=\"pt-2\">$$Price</h5>
+                                <h5 class=\"pt-2\">$$product_price</h5>
                                 <button type=\"submit\" class=\"btn btn-warning\">Save for Later</button>
                                 <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
                             </div>
