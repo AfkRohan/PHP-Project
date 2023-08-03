@@ -308,8 +308,8 @@ h4{
     
 }
 header{
-    background-image: url('images/1.jpg');
-   
-    width:100%;
+    background-image: url('images/1.jpg');   
+    width:80%;
+    margin: auto;
     background-repeat: no-repeat;
 }
