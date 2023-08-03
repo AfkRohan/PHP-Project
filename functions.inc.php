@@ -6,19 +6,20 @@
     {
         global $pdo;
         $stmt=$pdo->prepare(
-            "select UserId, PasswordHash from user
+            "select CId, Password_hash from customer
             where Email=:email");
         $stmt->execute([
             "email" => $email
         ]);
-        
+        //12
         if($stmt->rowCount()==1)
         {
+            
             $row=$stmt->fetch(PDO::FETCH_ASSOC);
-            if(password_verify($password, $row["PasswordHash"]))
+            if($password == $row["Password_hash"])
             {
-                session_regenerate_id();
-                $_SESSION["UserId"]=$row["UserId"];
+                // session_regenerate_id();
+                // $_SESSION["UserId"]=$row["UserId"];
                 return true;
             }
         }
@@ -34,7 +35,7 @@
 
     function redirectIfLoggedIn()
     {
-        if(!empty($_SESSION["UserId"]))
+        if(!empty($_SESSION["CID"]))
         {
             header("Location: index.php");
         }
@@ -42,7 +43,7 @@
     
     function redirectIfNotLoggedIn()
     {
-        if(empty($_SESSION["UserId"]))
+        if(empty($_SESSION["CID"]))
         {
             header("Location: login.php");
         }

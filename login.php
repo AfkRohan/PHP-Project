@@ -19,14 +19,11 @@
                 <li><a href="about.php">About</a></li>
                 <li><a href="cart.php">Cart</a></li>
                 <li><a href="login.php">Login</a></li>
-                 
-                
             </ul>
         </nav>
         
         <?php
             require_once("functions.inc.php");
-            redirectIfLoggedIn();
             
             $errors=[];
             

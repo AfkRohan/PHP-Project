@@ -181,3 +181,6 @@ INTO TABLE products
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n';
+
+insert into Address values (1,"48","Lecester street","waterloo","Ontario","N2A 2V2");
+insert into Customer values (1,"Ekpreet","ek@gmail.com","Ss@1234",1);
