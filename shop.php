@@ -64,7 +64,7 @@
     <body>
 
         <nav class="navbar">
-            <a href="#" class="logo">IntStore</a>
+            <a href="#" class="logo">NightOwls Utility Store</a>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="shop.php">Shop</a></li>
@@ -84,7 +84,7 @@
                 $stmt = $pdo->query("SELECT * FROM products");
 
                 while($row=$stmt->fetch()){
-                    component($row['product_name'], $row['product_price'], $row['product_image'], $row['id']);
+                    component($row['Pname'], $row['Price'],$row['ProductDescription'] ,$row['ProductImageUrl'], $row['ProductID']);
                 }
 
                 ?>
