@@ -20,6 +20,7 @@ require_once("functions.inc.php");
         }
     </style>
       <!--Jss-->
+      <script src="script.js">
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -41,6 +42,18 @@ require_once("functions.inc.php");
         <?php } ?>
     </ul>
 </nav>
+<header>
+<div class="slideshow-container">
+            <div class="slide">
+                <img src="1.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="2.jpg" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="3.jpeg" alt="Slide 3">
+            </div>
+            </header>
 <div class="header">
     <div class="row">
         <div class="col-2">
@@ -75,6 +88,22 @@ require_once ("php/component.php");
                 ?>
             </div>
         </div>
+        <div class="container">
+<h1 class="FeaturedProduct">Dairy Products</h1>
+            <div class="row text-left py-2">
+               
+                <?php
+                global $pdo;
+                $stmt = $pdo->query("SELECT * FROM products where Categories_CategoryID=6");
+
+                while($row=$stmt->fetch()){
+                    Index_Component($row['Pname'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
+                }
+
+                ?>
+            </div>
+        </div>
+
 
 
 
