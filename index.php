@@ -46,38 +46,27 @@ require_once("functions.inc.php");
         </div>
     </div>
 </div>
-<?php require_once("db/db_conn.php"); ?>
+<?php require_once("db/db_conn.php");
+require_once ("php/header.php");
+require_once ("php/component.php");
+ ?>
 
 <div class="container">
-<div class="row text-center py-5">
-    <?php
-    global $pdo;
-    $stmt = $pdo->query("SELECT * FROM products");
-    <?php
-    // Step 4: Display products on the index page
-    if ($stmt->num_rows > 0) {
-        while ($row = $stmt->fetch_assoc()) {
-            echo "<li>";
-            echo "<strong>Name:</strong> " . $row['Pname'] . "<br>";
-            echo "<strong>Price:</strong> $" . $row['Price'] . "<br>";
-            echo "<strong>Description:</strong> " . $row['ProductDescription'] . "<br>";
-            echo " <a href='cart.php?id=" . $row["id"] . "' class='btn'>Add to Cart</a>";
-            echo "</li>";
-        }
-    } else {
-        echo "No products found.";
-    }
-    ?>
-    
-   
-</div>
-</div>
+            <div class="row text-center py-5">
+                <?php
+                global $pdo;
+                $stmt = $pdo->query("SELECT * FROM products");
+
+                while($row=$stmt->fetch()){
+                    component($row['Pname'], $row['Price'], $row['ProductImageUrl'], $row['ProductID']);
+                }
+
+                ?>
+            </div>
+        </div>
 
 
-?>
-<div>
 
-</div>
 
 <footer class="footer">
     <div class="container">
