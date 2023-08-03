@@ -29,7 +29,7 @@ require_once("functions.inc.php");
 </head>
 <body>
 <nav class="navbar">
-    <a href="#" class="logo">IntStore</a>
+    <a href="#" class="logo">NightOwls Utility Store</a>
     <ul class="nav-links">
         <li><a href="index.php">Home</a></li>
         <li><a href="shop.php">Shop</a></li>
