@@ -9,7 +9,7 @@ function component($product_name, $product_price,$product_desc , $image, $id){
                             <img src='$product_image' alt=\"Image1\" class=\"img-fluid card-img-top\">
                         </div>
                         <div class=\"card-body\">
-                            <h5 class=\"card-title\">$product_name</h5>
+                            <h5 class=\"card-title\">$Pname</h5>
                             <h6>
                                 <i class=\"fas fa-star\"></i>
                                 <i class=\"fas fa-star\"></i>
@@ -21,12 +21,12 @@ function component($product_name, $product_price,$product_desc , $image, $id){
                                 $product_desc
                             </p>
                             <h5>
-                                <small><s class=\"text-secondary\">$519</s></small>
-                                <span class=\"price\">$product_price</span>
+                                
+                                <span class=\"price\">$Price</span>
                             </h5>
 
                             <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
-                             <input type='hidden' name='product_id' value='$id'>
+                             <input type='hidden' name='product_id' value='$ProductID'>
                         </div>
                     </div>
                 </form>
@@ -40,16 +40,16 @@ function cartElement($product_name, $product_price, $product_image, $id)
     
     $element = "
     
-    <form action=\"cart.php?action=remove&id=$id\" method=\"post\" class=\"cart-items\">
+    <form action=\"cart.php?action=remove&id=$ProductID\" method=\"post\" class=\"cart-items\">
                     <div class=\"border rounded\">
                         <div class=\"row bg-white\">
                             <div class=\"col-md-3 pl-0\">
-                                <img src=$product_image alt=\"Image1\" class=\"img-fluid\">
+                                <img src=$ProductImageUrl alt=\"Image1\" class=\"img-fluid\">
                             </div>
                             <div class=\"col-md-6\">
-                                <h5 class=\"pt-2\">$product_name</h5>
+                                <h5 class=\"pt-2\">$Pname</h5>
                                 <small class=\"text-secondary\">Seller: dailytuition</small>
-                                <h5 class=\"pt-2\">$$product_price</h5>
+                                <h5 class=\"pt-2\">$$Price</h5>
                                 <button type=\"submit\" class=\"btn btn-warning\">Save for Later</button>
                                 <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
                             </div>

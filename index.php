@@ -7,6 +7,10 @@ require_once("functions.inc.php");
 <html>
 <head>
     <!-- Test -->
+     <!--CSS-->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css" integrity="sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" rel="stylesheet">
@@ -15,6 +19,11 @@ require_once("functions.inc.php");
             color:red;
         }
     </style>
+      <!--Jss-->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <nav class="navbar">
@@ -52,13 +61,15 @@ require_once ("php/component.php");
  ?>
 
 <div class="container">
-            <div class="row text-center py-5">
+<h1> Ready to Eat Products</h1>
+            <div class="row text-left py-2">
+               
                 <?php
                 global $pdo;
-                $stmt = $pdo->query("SELECT * FROM products");
+                $stmt = $pdo->query("SELECT * FROM products where Categories_CategoryID=1");
 
                 while($row=$stmt->fetch()){
-                    component($row['Pname'], $row['Price'], $row['ProductImageUrl'], $row['ProductID']);
+                    component($row['Pname'], $row['ProductDescription'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
                 }
 
                 ?>
