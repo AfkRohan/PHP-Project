@@ -21,7 +21,7 @@ function component($product_name, $product_price,$product_desc ,$image, $id){
                                 $product_desc
                             </p>
                             <h5> 
-                                <span class=\"price\">$product_price</span>
+                                <span class=\"price\">$product_price CAD</span>
                             </h5>
                             <button type=\"submit\" class=\" my-3\" name=\"add\" id=\"btnATC\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
                              <input type='hidden' name='product_id' value='$id'>
@@ -47,7 +47,7 @@ function cartElement($product_name, $product_price, $product_image, $id)
                             <div class=\"col-md-6\">
                                 <h5 class=\"pt-2\">$product_name</h5>
                                 <small class=\"text-secondary\">Seller: dailytuition</small>
-                                <h5 class=\"pt-2\">$$product_price</h5>
+                                <h5 class=\"pt-2\">$product_price CAD</h5>
                                 <button type=\"submit\" class=\"btn btn-warning\">Save for Later</button>
                                 <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
                             </div>
