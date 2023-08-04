@@ -125,7 +125,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `nightowlsdb`.`Card` ;
 
 CREATE TABLE IF NOT EXISTS `nightowlsdb`.`Card` (
-  `CardNumber` INT NOT NULL AUTO_INCREMENT,
+  `CardNumber` INT NOT NULL,
   `CVV` INT NULL,
   `ExpiryDate` VARCHAR(10) NULL,
   `CardType` VARCHAR(45) NULL,
