@@ -47,14 +47,13 @@ require_once("functions.inc.php");
 <div class="header">
     <div class="row">
         <div class="col-2">
-            <h1>It's raining Rollbacks</h1>
-            <p>Save m000re on 1000s of your faves..!!</p>
-            <p>Shop great sales & offers on select grocery items during<br>
-                Instore's Rollback Event.</p>
+            <h1>Great Deals</h1>
+            <p>Chance to Grab Best Products...!</p>
+            <p>All Products in one store and have Great discounts and best deal with Good Quality Products</p>
             <a href="shop.php" class="btn">Explore Now &#8594;</a>
         </div>
         <div class="col-2">
-            <img src="images/1.jpg" width="450px">
+            <img src="images/1.jpg" width="400px">
         </div>
     </div>
 </div>

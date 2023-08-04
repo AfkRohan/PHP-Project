@@ -21,7 +21,7 @@
     </head>
     <body>
         <nav class="navbar">
-            <a href="#" class="logo">IntStore</a>
+            <a href="#" class="logo">NightOwls Utility Store</a>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="shop.php">Shop</a></li>
@@ -37,15 +37,15 @@
             redirectIfLoggedIn();
             $errors=[];
             global $pdo;
-            $ProductAddedBy = "Deepika Koti";
+            $ProductAddedBy = "Admin";
             
             if($_SERVER["REQUEST_METHOD"]=="POST") {
-                if (isset($_POST['fullname'])) {
-                    $fullname = validateData($_POST['fullname']);
-                    if (empty($fullname)) {
-                        $errors['fullname'] = 'Fullname is required.';
-                    } elseif (!preg_match("/^[a-zA-Z ]{10,}$/", $fullname)) {
-                        $errors['fullname'] = 'Please enter a valid fullname.';
+                if (isset($_POST['Name'])) {
+                    $Name = validateData($_POST['Name']);
+                    if (empty($Name)) {
+                        $errors['Name'] = 'Name is required.';
+                    } elseif (!preg_match("/^[a-zA-Z ]{10,}$/", $Name)) {
+                        $errors['Name'] = 'Please enter a valid Name.';
                     }
                 }
                     
@@ -58,15 +58,7 @@
                     }
                 }
                     
-                if (isset($_POST['username'])) {
-                    $username = validateData($_POST['username']);
-                    if (empty($username)) {
-                        $errors['username'] = 'Username is required.';
-                    } elseif (!preg_match("/^[a-zA-Z\s.,]*$/", $username)) {
-                        $errors['username'] = 'Please enter a valid username.';
-                    }
-                }
-                    
+             
                 if (isset($_POST['password'])) {
                     $password = validateData($_POST['password']);
                     if (empty($password)) {
@@ -80,7 +72,7 @@
                 {
                     $sql = "INSERT INTO user (FullName, Email, UserName, PasswordHash) VALUES (?, ?, ?, ?)";
                     $stmt = $pdo->prepare($sql);
-                    $stmt->execute([$fullname, $email, $username, password_hash($password, PASSWORD_DEFAULT)]);
+                    $stmt->execute([$Name, $email,password_hash($password, PASSWORD_DEFAULT)]);
                 
                     // Redirect the user to the login page
                     header("Location: login.php");
@@ -99,20 +91,16 @@
             <form class="form" method="POST" autocomplete="off">
                 <h2>Sign Up</h2>
                 <div class="input-group">
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" value="<?php echo isset($fullname) ? $fullname : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['fullname']) ? $errors['fullname'] : ''; ?></span>
+                    <label for="fullname"> Name</label>
+                    <input type="text" id="Name" name="Name" value="<?php echo isset($Name) ? $Name : ''; ?>" autocomplete="off"/>
+                    <span class="error"><?php echo isset($errors['Name']) ? $errors['Name'] : ''; ?></span>
                 </div>
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" autocomplete="off"/>
                     <span class="error"><?php echo isset($errors['email']) ? $errors['email'] : ''; ?></span>
                 </div>
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" value="<?php echo isset($username) ? $username : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['username']) ? $errors['username'] : ''; ?></span>
-                </div>
+              
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" value="<?php echo isset($password) ? $password : ''; ?>" autocomplete="off"/>

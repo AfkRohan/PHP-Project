@@ -23,7 +23,7 @@ function component($product_name, $product_price,$product_desc ,$image, $id){
                             <h5> 
                                 <span class=\"price\">$product_price</span>
                             </h5>
-                            <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
+                            <button type=\"submit\" class=\" my-3\" name=\"add\" id=\"btnATC\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
                              <input type='hidden' name='product_id' value='$id'>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ function Index_Component($product_name, $product_price,$image, $id){
                                 <span class=\"price\">$product_price</span>
                             </h5>
 
-                            <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
+                            <button type=\"submit\" class=\" my-3\" name=\"add\"id=\"btnATC\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
                              <input type='hidden' name='product_id' value='$id'>
                         </div>
                     </div>
