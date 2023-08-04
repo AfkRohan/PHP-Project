@@ -86,7 +86,7 @@ function Index_Component($product_name, $product_price,$image, $id){
                          
                             <h5>
                                 
-                                <span class=\"price\">$product_price</span>
+                                <span class=\"price\">$product_price CAD</span>
                             </h5>
 
                             <button type=\"submit\" class=\" my-3\" name=\"add\"id=\"btnATC\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>

@@ -74,6 +74,7 @@
                     <input type="text" id="postal" name="postal" value="<?php echo isset($postal) ? $postal : ''; ?>" autocomplete="off"/>
                     <span class="error"><?php echo isset($errors['postal']) ? $errors['postal'] : ''; ?></span>
                 </div>
+                <button type="submit">Proceed To Pay</button>
             </form>
         </div>
 
