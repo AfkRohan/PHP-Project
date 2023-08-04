@@ -27,50 +27,103 @@
                     <li><a href="contact.php">Contact</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="cart.php">Cart</a></li>
-                    <?php if (!empty($_SESSION["UserId"])) { ?>
+                    <?php if (!empty($_SESSION["CID"])) { ?>
                         <li><a href="logout.php">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="login.php">Login</a></li>
                     <?php } ?>
                 </ul>
         </nav>
+        
+        <?php 
+            require_once("functions.inc.php");
+            redirectIfNotLoggedIn();
+
+            //$errors=[];
+            global $pdo;
+            $ProductAddedBy = "Admin";
+
+            // Autofilling logged in customer's info
+            $cid = $_SESSION["CID"];
+            //echo $cid;
+            // Retriving CUstomer info
+            $stmt = $pdo->prepare("SELECT * FROM Customer WHERE CID=:id");
+                  $stmt->execute(['id' => $cid]);
+                  $crow = $stmt->fetch();
+            $name = $crow['Name'];
+            $email = $crow['Email'];
+            $aid = $crow['Address_AddressID'];
+            //echo $aid;
+            // retriving Customer's address
+            $stmt = $pdo->prepare("SELECT * FROM Address WHERE AddressID=:id");
+                  $stmt->execute(['id' => $aid]);
+                  $arow = $stmt->fetch();
+            $housenum = $arow['houseNumber'];
+            $street = $arow['streetName'];
+            $city= $arow['City'];
+            $province = $arow['Province'];
+            $postal = $arow['postalCode'];
+
+            
+            if($_SERVER["REQUEST_METHOD"]=="POST") {
+                $pid = $_POST['pid'];
+                $price = $_POST['price'];
+                $quantity = $_POST['quantity'];
+                $total = $_POST['total'];
+                $customerCID = $cid;
+                // Get the current timestamp
+                $timestamp = date("Y-m-d H:i:s");
+                $query = "INSERT INTO `Order` (TimeStamp, BilledAmount, Customer_CID, Products_ProductID) VALUES (:timestamp, :total, :customerCID, :pid)";
+                $statement = $pdo->prepare($query);
+
+                // Bind values to the placeholders
+                $statement->bindParam(':timestamp', $timestamp);
+                $statement->bindParam(':total', $total);
+                $statement->bindParam(':customerCID', $customerCID);
+                $statement->bindParam(':pid', $pid);
+
+                // Execute the prepared statement
+                if ($statement->execute()) {
+                    // Redirect to the payment page
+                    header("Location: payment.php");
+                } else {
+                    // Handle error, e.g., display an error message
+                    echo "Error inserting data into the database.";
+                }
+            }
+        ?>
+
         <div class="container">
             <form class="form" method="POST">
                 <h2>Checkout</h2>
                 <div class="input-group">
                     <label for="fullname"> Name</label>
-                    <input type="text" id="name" name="name" value="<?php echo isset($name) ? $name : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['name']) ? $errors['name'] : ''; ?></span>
+                    <input type="text" id="name" name="name" value="<?php echo isset($name) ? $name : ''; ?>" autocomplete="off" disabled/>
                 </div>
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['email']) ? $errors['email'] : ''; ?></span>
+                    <input type="email" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" autocomplete="off" disabled/>
                 </div>
                 <div class="input-group">
                     <label for="House Number">House Number</label>
-                    <input type="text" id="housenum" name="housenum" value="<?php echo isset($housenum) ? $housenum : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['housenum']) ? $errors['housenum'] : ''; ?></span>
+                    <input type="text" id="housenum" name="housenum" value="<?php echo isset($housenum) ? $housenum : ''; ?>" autocomplete="off" disabled/>
                 </div>
                 <div class="input-group">
                     <label for="Street Name">Street Name</label>
-                    <input type="text" id="Street" name="Street" value="<?php echo isset($street) ? $street : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['street']) ? $errors['street'] : ''; ?></span>
+                    <input type="text" id="Street" name="Street" value="<?php echo isset($street) ? $street : ''; ?>" autocomplete="off" disabled/>
                 </div>
                 <div class="input-group">
                     <label for="City">City</label>
-                    <input type="text" id="city" name="city" value="<?php echo isset($city) ? $city : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['city']) ? $errors['city'] : ''; ?></span>
+                    <input type="text" id="city" name="city" value="<?php echo isset($city) ? $city : ''; ?>" autocomplete="off" disabled/>
                 </div>
                 <div class="input-group">
-                    <label for="Province">Province</label>
-                    <input type="text" id="province" name="province" value="<?php echo isset($province) ? $province : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['province']) ? $errors['province'] : ''; ?></span>
+                    <label for="province"> Province</label>
+                    <input type="text" id='province' name='province' value="<?php echo isset($province) ? $province : ''; ?>"autocomplete="off" disabled/>
+                    
                 </div>
                 <div class="input-group">
                     <label for="Postal Code">Postal Code</label>
-                    <input type="text" id="postal" name="postal" value="<?php echo isset($postal) ? $postal : ''; ?>" autocomplete="off"/>
-                    <span class="error"><?php echo isset($errors['postal']) ? $errors['postal'] : ''; ?></span>
+                    <input type="text" id="postal" name="postal" value="<?php echo isset($postal) ? $postal : ''; ?>" autocomplete="off" disabled/>
                 </div>
                 <input type='hidden' name='pid' id='pid' />
                 <input type='hidden' name='price' id='price' />
