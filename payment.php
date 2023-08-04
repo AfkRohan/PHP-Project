@@ -88,7 +88,7 @@
                 if (count($errors) == 0)
                 {
                     $sql = "INSERT INTO `Card` (CardNumber, CVV, ExpiryDate, CardType, Customer_CID) VALUES (?, ?, ?, ?, ?)";
-                    $stmt = $conn->prepare($sql);
+                    $stmt = $pdo->prepare($sql);
                     
                     $stmt->bindParam(1, $cardNumber);
                     $stmt->bindParam(2, $cvv);
