@@ -68,6 +68,7 @@
                     } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/', $password)) {
                         $errors['password'] = 'Please enter a valid password.';
                     }
+                    $_POST['password']=password_hash($password, PASSWORD_DEFAULT);
                 }
                 if (isset($_POST['housenumber'])) {
                     $housenumber = validateData($_POST['housenumber']);
@@ -94,7 +95,7 @@
                     }
                     else{
                         $province=htmlspecialchars($_POST["province"]);
-                        if(!in_array($province, [" ","AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"])){
+                        if(!in_array($province, ["AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"])){
                             $errors['province']="<p> Province is invalid </p>";
                         }
                     }
@@ -113,24 +114,21 @@
                 {
                     $sql = "INSERT INTO address (houseNumber, streetName, City,Province, postalCode) 
                     VALUES ('$housenumber', '$streetname', '$city','$province', '$postalcode')";
-                    
-                    if ($pdo->query($sql) === TRUE) {
+                $result = $pdo->query($sql);
+                    if($result){
+                      
                         $AddressID = $pdo->lastInsertId(); 
-                        echo $AddressID;
+                       // echo $AddressID;
                         $sqlCustomer = "INSERT INTO customer (Name, Email, Password_hash, Address_AddressID) 
-                                        VALUES ('$Name', '$email', password_hash('$password', PASSWORD_DEFAULT), $AddressID)";
-                        
-                        if ($pdo->query($sqlCustomer) === TRUE) {
-                            echo "Customer Sign On successfully!";
-                             // Redirect the user to the login page
-                            header("Location: login.php");
-                            exit();
-                        } else {
-                            echo "Error inserting customer: ";
-                        }
-                    }            
-                
-                   
+                                         VALUES ('$Name', '$email','$password',' $AddressID')";
+                                          $result1 = $pdo->query($sqlCustomer);
+                                        
+                    }
+
+                    
+                    // Redirect the user to the login page
+                    header("Location: login.php");
+                    exit();
                 }
             }
             function validateData($data) {
@@ -179,7 +177,7 @@
                     <label for="province"> Province</label>
                     <select class="input" id='province' name='province' >
                 <?php
-                    $provinces=[" ","AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"];
+                    $provinces=["AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"];
                     foreach($provinces as $value){
                         echo " <option value='$value'>$value</option>";
                         
