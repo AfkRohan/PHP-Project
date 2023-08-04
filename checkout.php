@@ -19,7 +19,6 @@
     </head>
 
     <body>
-
         <nav class="navbar">
             <a href="#" class="logo">NightOwls Utility Store</a>
                 <ul class="nav-links">
@@ -35,7 +34,6 @@
                     <?php } ?>
                 </ul>
         </nav>
-        
         <div class="container">
             <form class="form" method="POST">
                 <h2>Checkout</h2>
@@ -74,10 +72,22 @@
                     <input type="text" id="postal" name="postal" value="<?php echo isset($postal) ? $postal : ''; ?>" autocomplete="off"/>
                     <span class="error"><?php echo isset($errors['postal']) ? $errors['postal'] : ''; ?></span>
                 </div>
+                <input type='hidden' name='pid' id='pid' />
+                <input type='hidden' name='price' id='price' />
+                <input type='hidden' name='quantity' id='quantity'/>
+                <input type='hidden' name='total' id='total' /> 
                 <button type="submit">Proceed To Pay</button>
             </form>
         </div>
-
+         <script>
+            window.onload = ()=> {
+                let addedItem = JSON.parse(sessionStorage.getItem('cart'));
+                document.getElementById('pid').value =addedItem.pid;
+                document.getElementById('price').value =addedItem.price;
+                document.getElementById('quantity').value =addedItem.quantity;
+                document.getElementById('total').value =addedItem.total;
+            }
+         </script>               
         <footer class="footer">
           <div class="container">
             <div class="row">
