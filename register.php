@@ -44,10 +44,12 @@
                     $Name = validateData($_POST['Name']);
                     if (empty($Name)) {
                         $errors['Name'] = 'Name is required.';
-                    } elseif (!preg_match("/^[a-zA-Z ]{10,}$/", $Name)) {
+                    } elseif (!preg_match('/^[A-Za-z\'\-\s]+$/', $Name)) {
                         $errors['Name'] = 'Please enter a valid Name.';
                     }
                 }
+            
+               
                     
                 if (isset($_POST['email'])) {
                     $email = validateData($_POST['email']);
@@ -67,16 +69,68 @@
                         $errors['password'] = 'Please enter a valid password.';
                     }
                 }
-                
+                if (isset($_POST['housenumber'])) {
+                    $housenumber = validateData($_POST['housenumber']);
+                    if (empty($housenumber)) {
+                        $errors['housenumber'] = 'housenumber is required.';
+                    } elseif (!preg_match('/^\d+[A-Za-z]?$/', $housenumber)) {
+                        $errors['housenumber'] = 'Please enter a valid housenumber.';
+                    }
+                }
+                if (isset($_POST['streetname'])) {
+                    $streetname = validateData($_POST['streetname']);
+                    if (empty($streetname)) {
+                        $errors['streetname'] = 'streetname is required.';
+                    } 
+                }
+                if (isset($_POST['city'])) {
+                    $city = validateData($_POST['city']);
+                    if (empty($city)) {
+                        $errors['city'] = 'City is required.';
+                    } 
+                }
+                if(empty($_POST["province"])){
+                    $errors['province']="<p> province is required. </p>";
+                    }
+                    else{
+                        $province=htmlspecialchars($_POST["province"]);
+                        if(!in_array($province, [" ","AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"])){
+                            $errors['province']="<p> Province is invalid </p>";
+                        }
+                    }
+                    
+                    if (isset($_POST['postalcode'])) {
+                        $postalcode = validateData($_POST['postalcode']);
+                        if (empty($postalcode)) {
+                            $errors['postalcode'] = 'postalcode is required.';
+                        } elseif (!preg_match('/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/', $postalcode)) {
+                            $errors['postalcode'] = 'Please enter a valid postalcode.';
+                        }
+                    }
+                    
+                    
                 if (count($errors) == 0)
                 {
-                    $sql = "INSERT INTO user (FullName, Email, UserName, PasswordHash) VALUES (?, ?, ?, ?)";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute([$Name, $email,password_hash($password, PASSWORD_DEFAULT)]);
+                    $sql = "INSERT INTO address (houseNumber, streetName, City,Province, postalCode) 
+                    VALUES ('$housenumber', '$streetname', '$city','$province', '$postalcode')";
+                    
+                    if ($pdo->query($sql) === TRUE) {
+                        $AddressID = $pdo->lastInsertId(); 
+                        echo $AddressID;
+                        $sqlCustomer = "INSERT INTO customer (Name, Email, Password_hash, Address_AddressID) 
+                                        VALUES ('$Name', '$email', password_hash('$password', PASSWORD_DEFAULT), $AddressID)";
+                        
+                        if ($pdo->query($sqlCustomer) === TRUE) {
+                            echo "Customer Sign On successfully!";
+                             // Redirect the user to the login page
+                            header("Location: login.php");
+                            exit();
+                        } else {
+                            echo "Error inserting customer: ";
+                        }
+                    }            
                 
-                    // Redirect the user to the login page
-                    header("Location: login.php");
-                    exit();
+                   
                 }
             }
             function validateData($data) {
@@ -91,7 +145,7 @@
             <form class="form" method="POST" autocomplete="off">
                 <h2>Sign Up</h2>
                 <div class="input-group">
-                    <label for="fullname"> Name</label>
+                    <label for="Name"> Name</label>
                     <input type="text" id="Name" name="Name" value="<?php echo isset($Name) ? $Name : ''; ?>" autocomplete="off"/>
                     <span class="error"><?php echo isset($errors['Name']) ? $errors['Name'] : ''; ?></span>
                 </div>
@@ -105,6 +159,42 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" value="<?php echo isset($password) ? $password : ''; ?>" autocomplete="off"/>
                     <span class="error"><?php echo isset($errors['password']) ? $errors['password'] : ''; ?></span>
+                </div>
+                <div class="input-group">
+                    <label for="housenumber"> House Number</label>
+                    <input type="text" id="housenumber" name="housenumber" value="<?php echo isset($housenumber) ? $housenumber : ''; ?>" autocomplete="off"/>
+                    <span class="error"><?php echo isset($errors['housenumber']) ? $errors['housenumber'] : ''; ?></span>
+                </div>
+                <div class="input-group">
+                    <label for="streetname"> Street Name</label>
+                    <input type="text" id="streetname" name="streetname" value="<?php echo isset($streetname) ? $streetname : ''; ?>" autocomplete="off"/>
+                    <span class="error"><?php echo isset($errors['streetname']) ? $errors['streetname'] : ''; ?></span>
+                </div>
+                <div class="input-group">
+                    <label for="city"> City</label>
+                    <input type="text" id="city" name="city" value="<?php echo isset($city) ? $city : ''; ?>" autocomplete="off"/>
+                    <span class="error"><?php echo isset($errors['city']) ? $errors['city'] : ''; ?></span>
+                </div>
+                <div class="input-group">
+                    <label for="province"> Province</label>
+                    <select class="input" id='province' name='province' >
+                <?php
+                    $provinces=[" ","AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"];
+                    foreach($provinces as $value){
+                        echo " <option value='$value'>$value</option>";
+                        
+                    }
+                    
+                ?>
+            </select>
+                    <span class="error"><?php echo isset($errors['province']) ? $errors['province'] : ''; ?></span>
+                </div>
+
+          
+                <div class="input-group">
+                    <label for="postalcode"> Postal Code</label>
+                    <input type="text" id="postalcode" name="postalcode" value="<?php echo isset($postalcode) ? $postalcode : ''; ?>" autocomplete="off"/>
+                    <span class="error"><?php echo isset($errors['postalcode']) ? $errors['postalcode'] : ''; ?></span>
                 </div>
                 <button type="submit">Sign Up</button>
                 <p class="signup">Already have an account? <a href="login.php">Log in</a></p>
@@ -132,31 +222,3 @@
         </footer>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
