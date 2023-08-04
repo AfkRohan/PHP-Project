@@ -42,7 +42,6 @@
             global $pdo;
             $ProductAddedBy = "Admin";
             $cid = $_SESSION["CID"];
-            echo $cid;
             if($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 // Validate Card Type
@@ -85,21 +84,44 @@
                     }
                 }
 
-                if (count($errors) == 0)
-                {
+                if (count($errors) == 0) {
                     $sql = "INSERT INTO `Card` (CardNumber, CVV, ExpiryDate, CardType, Customer_CID) VALUES (?, ?, ?, ?, ?)";
                     $stmt = $pdo->prepare($sql);
-                    
+                
                     $stmt->bindParam(1, $cardNumber);
                     $stmt->bindParam(2, $cvv);
                     $stmt->bindParam(3, $expiryDate);
                     $stmt->bindParam(4, $cardType);
                     $stmt->bindParam(5, $cid);
+                
+                    // Execute the first insert
+                    if ($stmt->execute()) {
 
-                    $stmt->execute();
-                    header("Location: thanks.php");
-                    exit();
+                        // Retrieve the OrderID using Customer_CID
+                        $orderSql = "SELECT OrderID FROM `Order` WHERE Customer_CID = ?";
+                        $orderStmt = $pdo->prepare($orderSql);
+                        $orderStmt->bindParam(1, $cid);
+                        if ($orderStmt->execute()) {
+                            $orderRow = $orderStmt->fetch(PDO::FETCH_ASSOC);
+                            $orderId = $orderRow['OrderID'];
+                
+                            // Insert into Payment table
+                            $paymentSql = "INSERT INTO `Payment` (Order_OrderID, Card_CardNumber) VALUES (?, ?)";
+                            $paymentStmt = $pdo->prepare($paymentSql);
+
+                            $paymentStmt->bindParam(1, $orderId);
+                            $paymentStmt->bindParam(2, $cardNumber);
+                
+                            // Execute the second insert
+                            if ($paymentStmt->execute()) {
+                                header("Location: thanks.php");
+                                exit();
+                            } 
+                        } 
+                    }
                 }
+                
+                
             }
             function validateData($data) {
                 $data = strip_tags($data);
