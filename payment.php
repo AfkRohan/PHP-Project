@@ -137,6 +137,7 @@
                     <input type="text" id="CVV" name="CVV" value="<?php echo isset($cvv) ? $cvv : ''; ?>" autocomplete="off"/>
                     <span class="error"><?php echo isset($errors['CVV']) ? $errors['CVV'] : ''; ?></span>
                 </div>
+                <button type="submit">Place Order</button>
             </form>
         </div>
                     
