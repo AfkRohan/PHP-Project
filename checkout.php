@@ -80,8 +80,8 @@
             </form>
         </div>
          <script>
-            window.onload() = ()=>{
-                let addedItem = sessionStorage.getItem('cart');
+            window.onload = ()=> {
+                let addedItem = JSON.parse(sessionStorage.getItem('cart'));
                 document.getElementById('pid').value =addedItem.pid;
                 document.getElementById('price').value =addedItem.price;
                 document.getElementById('quantity').value =addedItem.quantity;

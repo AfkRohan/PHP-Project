@@ -56,23 +56,20 @@ $row = $stmt->fetch();
             </div>
         </div>          
         <script>
-          <?php 
-          $flag = 1;
-          ?>
           let  qty = parseInt(document.getElementById('quantity').value);
           function checkout(){
             let total  = document.getElementById('total').textContent;
             total.replace('CAD','');
-            total = parseInt(total);
+            total = parseFloat(total);
             
-            let addedProduct = {
+            let addedItem = {
               pid : <?php echo $row['ProductID'] ?>,
               quantity : qty,
               total : total,
               price : <?php echo $row['Price'] ?>
             }
-            sessionStorage.setItem('cart', addedProduct); 
-            console.log(JSON.stringify(addedProduct));
+            sessionStorage.setItem('cart',JSON.stringify(addedItem)); 
+            // console.log(JSON.stringify(addedProduct));
             window.location.href='\checkout.php'; 
           }
           function calculateTotal(){
