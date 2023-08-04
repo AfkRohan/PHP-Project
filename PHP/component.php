@@ -38,7 +38,7 @@ function cartElement($product_name, $product_price, $product_image, $id)
     
     $element = "
     
-    <form action=\"cart.php\" method=\"get\" class=\"cart-items\">
+    <div class=\"cart-items\">
                     <div class=\"border rounded\">
                         <div class=\"row bg-white\">
                             <div class=\"col-md-3 pl-0\">
@@ -46,22 +46,14 @@ function cartElement($product_name, $product_price, $product_image, $id)
                             </div>
                             <div class=\"col-md-6\">
                                 <h5 class=\"pt-2\">$product_name</h5>
-                                <small class=\"text-secondary\">Seller: dailytuition</small>
+                                <small class=\"text-secondary\">Seller: Nightowls</small>
                                 <h5 class=\"pt-2\">$product_price CAD</h5>
-                                <button type=\"submit\" class=\"btn btn-warning\">Save for Later</button>
-                                <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
+                                <button onclick='checkout()' class=\"btn btn-warning\">Proceed to Checkout</button>
+                                <button onclick='reset()' class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
                             </div>
-                          
-                            <div class=\"col-md-3 py-5\">
-                                <div>
-                                    <input type=\"number\" id='quantity' value=\"1\" class=\"form-control w-25 d-inline\">
-                                </div>
-                            </div>
-                        </div>
-                        <div id='total'>
                         </div>
                     </div>
-                </form>
+                </div>
     ";
     echo  $element;
 }
