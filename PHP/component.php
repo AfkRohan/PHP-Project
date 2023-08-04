@@ -49,7 +49,10 @@ function cartElement($product_name, $product_price, $product_image, $id)
                                 <small class=\"text-secondary\">Seller: Nightowls</small>
                                 <h5 class=\"pt-2\">$product_price CAD</h5>
                                 <button onclick='checkout()' class=\"btn btn-warning\">Proceed to Checkout</button>
-                                <button onclick='reset()' class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
+                                <form method='get' action='cart.php'>
+                                <input type='hidden' value='0'  id='productID' name='product_id' /> 
+                                <button type='submit' class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
+                                </form>
                             </div>
                         </div>
                     </div>

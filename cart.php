@@ -6,9 +6,6 @@ require_once("PHP/component.php");
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $id = $_GET["product_id"];
 }
-$stmt = $pdo->prepare("SELECT * FROM products WHERE ProductID=:id");
-$stmt->execute(['id' => $id]);
-$row = $stmt->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +38,10 @@ $row = $stmt->fetch();
         <div class="container">
             <div class="row text-center py-5">
                 <?php
+                if($id>0){
+                  $stmt = $pdo->prepare("SELECT * FROM products WHERE ProductID=:id");
+                  $stmt->execute(['id' => $id]);
+                  $row = $stmt->fetch();
                 cartElement($row['Pname'], $row['Price'], "Images/" . $row['ProductImageUrl'], $row['ProductID']);
                 ?>
             </div>
@@ -54,8 +55,7 @@ $row = $stmt->fetch();
                           <p id='total'>  </p>
                        </div>
             </div>
-        </div>          
-        <script>
+            <script>
           let  qty = parseInt(document.getElementById('quantity').value);
           function checkout(){
             let total  = document.getElementById('total').textContent;
@@ -72,6 +72,11 @@ $row = $stmt->fetch();
             // console.log(JSON.stringify(addedProduct));
             window.location.href='\checkout.php'; 
           }
+
+          function reset(){
+            document.getElementsByClassName('container').innerHTML = '<h3> Cart is empty </h3>'
+          }
+
           function calculateTotal(){
             let  qty = parseInt(document.getElementById('quantity').value);
             let total = qty*<?php echo $row['Price']; ?>;
@@ -80,6 +85,14 @@ $row = $stmt->fetch();
           document.addEventListener("DOMContentLoaded", calculateTotal);
           document.getElementById('quantity').addEventListener('change',calculateTotal);
         </script> 
+        <?php } 
+        else { 
+          ?>
+        <h3> Cart is empty </h3>
+        <?php 
+        }
+        ?>
+        </div>          
         
         <footer class="footer">
           <div class="container">
