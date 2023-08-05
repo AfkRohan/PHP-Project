@@ -2,7 +2,7 @@
     require_once("functions.inc.php");
     // redirectIfNotLoggedIn();
     require_once("db/db_conn.php");
-    $id=1;
+    $id=$_GET['id'];
     $stmt = $pdo->prepare("SELECT * FROM products WHERE ProductID=:id");
     $stmt->execute(['id' => $id]); 
     $product = $stmt->fetch();
@@ -17,6 +17,18 @@
         <style>
             .error {
                 color:red;
+            }
+
+            .product{
+              gap:10px;
+              margin-top:4px;
+              margin-bottom:4px;
+            }
+            
+            .product-content{
+                display: flex;
+                flex-direction: column;
+                place-content: center;
             }
         </style>
     </head>
@@ -37,22 +49,25 @@
         </nav>
 
         <div class="product">
-                <div class="product_image">
+                <div class="product-image">
                     <img src="Images/<?php echo $product['ProductImageUrl']
                     ?>" alt="Product Image"  >
                 </div>
-                <div class="product_content">
+                <div class="product-content">
                     <h3> <?php echo $product['Pname']
                     ?> </h3>
                     <p> <?php echo $product['ProductDescription']
                     ?>
                 </p>
                 <h3> <?php echo $product['Price']." CAD"; ?>  </h3>
+                <div>
+                  <form method='get' action='cart.php'>
+                    <input type='hidden' value='<?php echo $id ?>' name='product_id'>
+                <button type='submit' class=" my-3" > Add to cart </button> 
+                </form>
+               </div>   
                 </div>
         </div>        
-        <div>
-          <button> Add to cart </button>
-        </div>   
         <footer class="footer">
           <div class="container">
             <div class="row">

@@ -3,6 +3,7 @@ function component($product_name, $product_price,$product_desc ,$image, $id){
     $product_image = "Images/{$image}";
     $element = "
      <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
+            <a href='product.php?id=$id'>
                 <form action=\"cart.php\" method=\"get\">
                     <div class=\"card shadow\">
                     <div>
@@ -28,6 +29,7 @@ function component($product_name, $product_price,$product_desc ,$image, $id){
                         </div>
                     </div>
                 </form>
+                </a>
             </div>
     ";
     echo $element;
@@ -64,6 +66,7 @@ function Index_Component($product_name, $product_price,$image, $id){
     $product_image = "Images/{$image}";
     $element = "
      <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
+     <a href='product.php?id=$id'>
                 <form action=\"cart.php\" method=\"get\">
                     <div class=\"card shadow\">
                         <div class=\"imageclass\">
@@ -85,10 +88,11 @@ function Index_Component($product_name, $product_price,$image, $id){
                             </h5>
 
                             <button type=\"submit\" class=\" my-3\" name=\"add\"id=\"btnATC\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
-                             <input type='hidden' name='product_id' value='$id'>
+                            <input type='hidden' name='product_id' value='$id'>
                         </div>
                     </div>
                 </form>
+                </a> 
             </div>
     ";
     echo $element;

@@ -19,6 +19,14 @@ require_once("functions.inc.php");
         .error {
             color:red;
         }
+        a{
+            color: #000504;
+        }
+
+        a:hover{
+            text-decoration: none;
+            color: #000504;
+        }
     </style>
      <!--Jss-->
    
