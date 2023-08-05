@@ -4,7 +4,10 @@ require_once("functions.inc.php");
 require_once("db/db_conn.php");
 require_once("PHP/component.php");
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  $id = $_GET["product_id"];
+  if(!isset($_GET['product_id']))
+    $id=0;
+  else
+    $id = $_GET["product_id"];
 }
 ?>
 
