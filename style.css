@@ -26,6 +26,11 @@ span .error {
     list-style: none;
 }
 
+.nav-links a:hover{
+    color: white;
+    text-decoration: underline;
+}
+
 .nav-links li {
     margin-left: 20px;
 }
@@ -34,6 +39,7 @@ span .error {
     color: #fff;
     text-decoration: none;
 }
+
 
 
 

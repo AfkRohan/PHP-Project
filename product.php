@@ -54,8 +54,8 @@
                     ?>" alt="Product Image"  >
                 </div>
                 <div class="product-content">
-                    <h3> <?php echo $product['Pname']
-                    ?> </h3>
+                    <h2> <?php echo $product['Pname']
+                    ?> </h2>
                     <p> <?php echo $product['ProductDescription']
                     ?>
                 </p>

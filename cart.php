@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           function calculateTotal(){
             let  qty = parseInt(document.getElementById('quantity').value);
             let total = qty*<?php echo $row['Price']; ?>;
-            document.getElementById('total').textContent = total+"CAD";
+            document.getElementById('total').textContent = total.toFixed(2)+"CAD";
           }
           document.addEventListener("DOMContentLoaded", calculateTotal);
           document.getElementById('quantity').addEventListener('change',calculateTotal);

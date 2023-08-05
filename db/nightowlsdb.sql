@@ -97,7 +97,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `nightowlsdb`.`Order` ;
 
 CREATE TABLE IF NOT EXISTS `nightowlsdb`.`Order` (
-  `OrderID` INT NOT NULL,
+  `OrderID` INT NOT NULL AUTO_INCREMENT,
   `TimeStamp` TIMESTAMP NULL,
   `Summary` VARCHAR(45) NULL,
   `BilledAmount` DECIMAL(10,2) NULL,
