@@ -93,7 +93,7 @@
                 $stmt = $pdo->query("SELECT * FROM products");
 
                 while($row=$stmt->fetch()){
-                    component($row['Pname'], $row['Price'],$row['ProductDescription'] ,$row['ProductImageUrl'], $row['ProductID']);
+                   new Component($row['Pname'], $row['Price'],$row['ProductDescription'] ,$row['ProductImageUrl'], $row['ProductID']);
                 }
 
                 ?>

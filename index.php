@@ -79,7 +79,7 @@ require_once ("php/component.php");
                 $stmt = $pdo->query("SELECT * FROM products where Categories_CategoryID=2");
 
                 while($row=$stmt->fetch()){
-                    Index_Component($row['Pname'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
+                    new Index_Component($row['Pname'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
                 }
 
                 ?>
@@ -94,7 +94,7 @@ require_once ("php/component.php");
                 $stmt = $pdo->query("SELECT * FROM products where Categories_CategoryID=6");
 
                 while($row=$stmt->fetch()){
-                    Index_Component($row['Pname'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
+                    new Index_Component($row['Pname'],$row['Price'], $row['ProductImageUrl'], $row['ProductID']);
                 }
 
                 ?>

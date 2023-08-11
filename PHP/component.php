@@ -1,5 +1,6 @@
 <?php
-function component($product_name, $product_price,$product_desc ,$image, $id){
+class Component{
+function __construct($product_name, $product_price,$product_desc ,$image, $id){
     $product_image = "Images/{$image}";
     $element = "
      <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
@@ -33,9 +34,11 @@ function component($product_name, $product_price,$product_desc ,$image, $id){
             </div>
     ";
     echo $element;
+  }
 }
 
-function cartElement($product_name, $product_price, $product_image, $id)
+class CartElement{
+function __construct($product_name, $product_price, $product_image, $id)
 {   
     
     $element = "
@@ -61,8 +64,10 @@ function cartElement($product_name, $product_price, $product_image, $id)
                 </div>
     ";
     echo  $element;
+  }
 }
-function Index_Component($product_name, $product_price,$image, $id){
+class Index_Component{ 
+    function __construct($product_name, $product_price,$image, $id){
     $product_image = "Images/{$image}";
     $element = "
      <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
@@ -96,4 +101,5 @@ function Index_Component($product_name, $product_price,$image, $id){
             </div>
     ";
     echo $element;
+  }
 }

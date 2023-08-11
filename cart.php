@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                   $stmt = $pdo->prepare("SELECT * FROM products WHERE ProductID=:id");
                   $stmt->execute(['id' => $id]);
                   $row = $stmt->fetch();
-                cartElement($row['Pname'], $row['Price'], "Images/" . $row['ProductImageUrl'], $row['ProductID']);
+                  new CartElement($row['Pname'], $row['Price'], "Images/" . $row['ProductImageUrl'], $row['ProductID']);
                 ?>
             </div>
             <div class="row text-center py-5">
