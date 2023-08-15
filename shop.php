@@ -2,12 +2,13 @@
     require_once('functions.inc.php');
     require_once ('./PHP/component.php');
     require_once('db/db_conn.php');
-
-
-//    $database = new CreateDb("intstoredb", "products");
+    
+    if($_SERVER['REQUEST_METHOD']=='GET'){
+        if(isset($_POST['filter']))
+            $_POST['filter']=="";
+    }
 
     if (isset($_POST['add'])){
-        /// print_r($_POST['product_id']);
         if(isset($_SESSION['cart'])){
 
             $item_array_id = array_column($_SESSION['cart'], "product_id");
@@ -36,8 +37,6 @@
             echo($_SESSION['cart']);
         }
     }
-
-
 ?>
 
 
@@ -85,17 +84,42 @@
             </ul>
         </nav>
 
-        <?php require_once ("php/header.php"); ?>
+      
         <div class="container">
             <div class="row text-center py-5">
+             <form method='post' action ="<?php echo $_SERVER['PHP_SELF']; ?>" >      
+            <select name='filter' class="form-select form-select-lg mb-3" id='filter'>
+            <option value='' selected>  Choose a category... </option>
+            <option value='2'> Electronics </option>
+            <option value='3'> Utensil </option>
+            <option value='4'> Beverages </option>
+            <option value='5'> Bakery </option>
+            <option value='6'> Dairy </option>
+            <option value='7'> Stationary </option>
+            <option value='1'> Ready to eat </option>
+            </select>
+            <button type='submit' > filter Items </button>
+            </form>
+        </div>
+            <div class="row text-center py-5">
                 <?php
-                global $pdo;
-                $stmt = $pdo->query("SELECT * FROM products");
+                if(isset($_POST['filter']) && $_POST['filter']!=""){
+                    $filter = $_POST['filter'];
+                    $stmt = $pdo->prepare("SELECT * FROM Products WHERE Categories_CategoryID=:id");
+                    $stmt->execute(['id' => $filter]);
 
                 while($row=$stmt->fetch()){
                    new Component($row['Pname'], $row['Price'],$row['ProductDescription'] ,$row['ProductImageUrl'], $row['ProductID']);
                 }
 
+                }
+                else{
+                $stmt = $pdo->query("SELECT * FROM products");
+
+                while($row=$stmt->fetch()){
+                   new Component($row['Pname'], $row['Price'],$row['ProductDescription'] ,$row['ProductImageUrl'], $row['ProductID']);
+                }
+                 }
                 ?>
             </div>
         </div>
@@ -106,7 +130,7 @@
             <div class="row">
               <div class="col-md-4">
                 <h3>About Us</h3>
-                <p>We are a grocery store that provides fresh produce and quality products at affordable prices.</p>
+                <p>We provide Utility goods,and other household products at affordable prices..</p>
               </div>
               <div class="col-md-4">
                 <h3>Contact Us</h3>
@@ -116,7 +140,7 @@
           </div>
           <div class="footer-bottom">
             <div class="container">
-              <p>&copy; 2023 IntStore. All Rights Reserved.</p>
+              <p>&copy; 2023NightOwls Utility Store All Rights Reserved.</p>
             </div>
           </div>
         </footer>

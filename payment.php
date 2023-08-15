@@ -39,7 +39,7 @@
             require_once("functions.inc.php");
             redirectIfNotLoggedIn();
             $errors=[];
-            global $pdo;
+   
             $ProductAddedBy = "Admin";
             $cid = $_SESSION["CID"];
             if($_SERVER["REQUEST_METHOD"]=="POST") {
@@ -169,7 +169,7 @@
             <div class="row">
               <div class="col-md-4">
                 <h3>About Us</h3>
-                <p>We are a grocery store that provides fresh produce and quality products at affordable prices.</p>
+                <p>We provide Utility goods,and other household products at affordable prices..</p>
               </div>
               <div class="col-md-4">
                 <h3>Contact Us</h3>
@@ -179,7 +179,7 @@
           </div>
           <div class="footer-bottom">
             <div class="container">
-              <p>&copy; 2023 IntStore. All Rights Reserved.</p>
+              <p>&copy; 2023NightOwls Utility Store All Rights Reserved.</p>
             </div>
           </div>
         </footer>

@@ -36,8 +36,7 @@
             require_once("functions.inc.php");
             redirectIfLoggedIn();
             $errors=[];
-            global $pdo;
-            $ProductAddedBy = "Admin";
+   
             
             if($_SERVER["REQUEST_METHOD"]=="POST") {
                 if (isset($_POST['Name'])) {
@@ -204,17 +203,17 @@
             <div class="row">
               <div class="col-md-4">
                 <h3>About Us</h3>
-                <p>We are a grocery store that provides fresh produce and quality products at affordable prices.</p>
+                <p>We provide Utility goods,and other household products at affordable prices..</p>
               </div>
               <div class="col-md-4">
                 <h3>Contact Us</h3>
-                <p>123 Main Street<br>Anytown, USA<br>Phone: 555-555-5555<br>Email: info@grocerystore.com</p>
+                <p>999 Barrie Street<br>Barrie, Canada<br>Phone: 456-888-9090<br>Email: support@nightowls.com</p>
               </div>
             </div>
           </div>
           <div class="footer-bottom">
             <div class="container">
-              <p>&copy; 2023 IntStore. All Rights Reserved.</p>
+              <p>&copy; 2023NightOwls Utility Store All Rights Reserved.</p>
             </div>
           </div>
         </footer>
