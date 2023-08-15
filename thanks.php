@@ -24,8 +24,6 @@
                 <ul class="nav-links">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="shop.php">Shop</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="about.php">About</a></li>
                     <li><a href="cart.php">Cart</a></li>
                     <?php if (!empty($_SESSION["CID"])) { ?>
                         <li><a href="logout.php">Logout</a></li>
