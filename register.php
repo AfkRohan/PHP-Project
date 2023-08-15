@@ -131,8 +131,6 @@
                 }
             }
             function validateData($data) {
-                $data = strip_tags($data);
-                $data = htmlentities($data);
                 $data = htmlspecialchars($data);
                 return $data;
             }

@@ -40,8 +40,7 @@
             redirectIfNotLoggedIn();
             $errors=[];
    
-            $ProductAddedBy = "Admin";
-            $cid = $_SESSION["CID"];
+            $cid = htmlspecialchars($_SESSION["CID"]);
             if($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 // Validate Card Type
@@ -173,7 +172,7 @@
               </div>
               <div class="col-md-4">
                 <h3>Contact Us</h3>
-                <p>123 Main Street<br>Any town, USA<br>Phone: 555-555-5555<br>Email: info@grocerystore.com</p>
+                <p>999 Barrie Street<br>Barrie, Canada<br>Phone: 456-888-9090<br>Email: support@nightowls.com</p>
               </div>
             </div>
           </div>

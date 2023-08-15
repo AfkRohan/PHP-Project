@@ -39,13 +39,8 @@
             require_once("functions.inc.php");
             redirectIfNotLoggedIn();
 
-            //$errors=[];
-   
-            $ProductAddedBy = "Admin";
-
             // Autofilling logged in customer's info
-            $cid = $_SESSION["CID"];
-            //echo $cid;
+            $cid = htmlspecialchars($_SESSION["CID"]);
             // Retriving CUstomer info
             $stmt = $pdo->prepare("SELECT * FROM Customer WHERE CID=:id");
                   $stmt->execute(['id' => $cid]);
@@ -66,10 +61,10 @@
 
             
             if($_SERVER["REQUEST_METHOD"]=="POST") {
-                $pid = $_POST['pid'];
-                $price = $_POST['price'];
-                $quantity = $_POST['quantity'];
-                $total = $_POST['total'];
+                $pid = htmlspecialchars($_POST['pid']);
+                $price = htmlspecialchars($_POST['price']);
+                $quantity = htmlspecialchars($_POST['quantity']);
+                $total = htmlspecialchars($_POST['total']);
                 $customerCID = $cid;
                 // Get the current timestamp
                 $timestamp = date("Y-m-d H:i:s");
@@ -150,7 +145,7 @@
               </div>
               <div class="col-md-4">
                 <h3>Contact Us</h3>
-                <p>123 Main Street<br>Any town, USA<br>Phone: 555-555-5555<br>Email: info@grocerystore.com</p>
+                <p>999 Barrie Street<br>Barrie, Canada<br>Phone: 456-888-9090<br>Email: support@nightowls.com</p>
               </div>
             </div>
           </div>

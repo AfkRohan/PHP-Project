@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if(!isset($_GET['product_id']))
     $id=0;
   else
-    $id = $_GET["product_id"];
+    $id = htmlspecialchars($_GET["product_id"]);
 }
 ?>
 
